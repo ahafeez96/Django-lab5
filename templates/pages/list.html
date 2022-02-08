@@ -1,0 +1,48 @@
+{%extends 'home.html'%} {% block content%} {{method}} {% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  </head>
+  <body>
+    <table class="table table-dark" width="50%" border="1">
+      <tr>
+        <td scope="col">ID</td>
+        <td scope="col">Name</td>
+        <td scope="col">Actions</td>
+      </tr>
+      {%for intake in intakes%}
+      <tr>
+        <td scope="col" style="font-size: 30px">{{intake.id}}</td>
+        <td scope="col" style="font-size: 30px">{{intake.username}}</td>
+        <td scope="col">
+          <a
+            style="font-size: 30px"
+            href="{%url 'deleteintake' intake.id %}"
+            class="badge badge-primary"
+            >Delete</a
+          >
+          <a
+            style="font-size: 30px"
+            href="{%url 'updateintake' intake.id %}"
+            class="badge badge-info"
+            >Update</a
+          >
+        </td>
+      </tr>
+
+      {%endfor%}
+    </table>
+  </body>
+</html>
+{%endblock content%}
